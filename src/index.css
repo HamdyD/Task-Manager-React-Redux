@@ -10,6 +10,10 @@
   font-size: 26px;
 }
 
+h3 {
+  color: grey;
+}
+
 input {
   margin: 5px;
 }
@@ -20,6 +24,10 @@ input {
 
 .list-item {
   display: inline-block;
+}
+
+li {
+  margin: 5px;
 }
 
 .delete-button {

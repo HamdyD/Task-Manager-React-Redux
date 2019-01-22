@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { addReminder, deleteReminder } from "../actions";
+import { addReminder, deleteReminder, clearAll } from "../actions";
 import moment from "moment";
 
 class App extends Component {
@@ -51,7 +51,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="title">Reminder Pro</div>
+        <div className="title">
+          <h1>Task Manager</h1>
+          <h3>
+            <em>made with React-Redux</em>
+          </h3>
+        </div>
         <div className="form-inline reminder-form">
           <div className="form-group">
             <input
@@ -74,6 +79,9 @@ class App extends Component {
           </button>
         </div>
         {this.renderReminders()}
+        <div className="btn btn-danger" onClick={() => this.props.clearAll()}>
+          Clear All
+        </div>
       </div>
     );
   }
@@ -86,7 +94,10 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addReminder, deleteReminder }, dispatch);
+  return bindActionCreators(
+    { addReminder, deleteReminder, clearAll },
+    dispatch
+  );
 }
 
 export default connect(
